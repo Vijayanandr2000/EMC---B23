@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <style>
+        /* 
+            xs - 0 - 546
+            s  - 546 - 768
+            m  - 768 - 992
+            l  - 992 - 1200
+            xl - 1200 + 
+        */
+
+        /* media query syntax */
+        /* @media screen {
+
+        } */
+
+        h1 {
+            color: red;
+
+
+            @media (max-width: 546px) {
+                color: blue;
+            }
+
+        }
+
+        @media (max-width: 546px) {
+            body {
+                background-color: lightblue;
+            }
+        }
+
+        @media (min-width: 546px) and (max-width: 768px) {
+            body {
+                background-color: lightgreen;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+            body {
+                background-color: lightyellow;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1200px) {
+            body {
+                background-color: lightpink;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            body {
+                background-color: lightgray;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vijay</h1>
+
+</body>
+
+</html>
