@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+</head>
+
+<body>
+    <script>
+        let guess = Math.floor(Math.random() * 10) + 1;
+        let attempt = 0
+
+        while (true) {
+            let userInput = prompt("Guess a number between 1 and 10:");
+            attempt++;
+
+            if (userInput == guess) {
+                console.log("Congratulations! You guessed the correct number." + " Attempts: " + attempt);
+                break;
+            } else if (userInput < guess) {
+                console.log("Too Low");
+            } else {
+                console.log("Too High");
+            }
+        }
+    </script>
+</body>
+
+</html>

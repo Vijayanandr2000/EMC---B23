@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+    <style>
+        .container {
+            display: grid;
+            gap: 10px;
+            grid-template-areas:
+                "entrance parking parking"
+                "br1 hall kitchen"
+                "br1 staircase br2";
+            /* border: 1px solid red; */
+            height: 90vh;
+            text-transform: capitalize;
+            grid-template-rows: 1fr 2fr 1fr;
+        }
+
+        .item {
+            background: lightcoral;
+        }
+
+        .entrance {
+            grid-area: entrance;
+        }
+
+        .parking {
+            grid-area: parking;
+        }
+
+        .br1 {
+            grid-area: br1;
+        }
+
+        .hall {
+            grid-area: hall;
+        }
+
+        .kitchen {
+            grid-area: kitchen;
+        }
+
+        .staircase {
+            grid-area: staircase;
+        }
+
+        .br2 {
+            grid-area: br2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item entrance">entrance</div>
+        <div class="item parking">parking</div>
+        <div class="item br1">br1</div>
+        <div class="item hall">hall</div>
+        <div class="item kitchen">kitchen</div>
+        <div class="item staircase">staircase</div>
+        <div class="item br2">br2</div>
+    </div>
+
+</body>
+
+</html>
