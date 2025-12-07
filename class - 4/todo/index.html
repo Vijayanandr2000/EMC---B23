@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+
+    <!-- <script src="script.js" defer></script> -->
+</head>
+
+<body>
+    <!-- <input type="text" id="vijay">
+    <p>Vijay</p>
+    <button onclick="print()">Check</button> -->
+
+    <h2>TODO</h2>
+
+    <div>
+        <input type="text" id="input">
+        <button id="add">Add</button>
+    </div>
+
+
+    <ol id="list">
+    </ol>
+
+    <script>
+        const input = document.getElementById("input")
+        const btn = document.getElementById("add")
+        const list = document.getElementById("list")
+
+        btn.addEventListener("click", () => {
+            let inputValue = input.value
+
+            const li = document.createElement("li")
+            li.textContent = inputValue
+
+            const del = document.createElement("button")
+            del.textContent = "del"
+
+            del.addEventListener("click", () => {
+                li.remove()
+            })
+
+            li.appendChild(del)
+            list.appendChild(li)
+
+            input.value = ""
+        })
+    </script>
+</body>
+
+</html>

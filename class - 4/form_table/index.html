@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form + Table</title>
+</head>
+
+<body>
+    <h1>Form</h1>
+
+    <form>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Name" name="name">
+        </div>
+
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="Age" name="age">
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Email" name="email">
+        </div>
+
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="hobby">Hobbies:</label>
+            <input type="checkbox" id="hobby1" value="reading" name="hobbies"> Reading
+            <input type="checkbox" id="hobby2" value="traveling" name="hobbies"> Traveling
+            <input type="checkbox" id="hobby3" value="gaming" name="hobbies"> Gaming
+        </div>
+
+        <div>
+            <label for="education">Education:</label>
+            <input type="radio" name="education" id="hs" value="HS"> High School
+            <input type="radio" name="education" id="b" value="BAC"> Bachelor's
+            <input type="radio" name="education" id="m" value="MASTER"> Master's
+        </div>
+
+        <button type="submit">Submit</button>
+
+
+    </form>
+
+    <hr>
+
+    <table id="userTable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Education</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+            <!-- <tr>
+                <td></td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.querySelector("form")
+        const userTable = document.getElementById("userTable").getElementsByTagName("tbody")[0]
+
+        const nameInput = document.getElementById("name");
+        const ageInput = document.getElementById("age");
+        const emailInput = document.getElementById("email");
+        const genderInput = document.getElementById("gender");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            // const name = nameInput.value
+            // const age = ageInput.value
+            // const email = emailInput.value
+            // const gender = genderInput.value
+
+            // const hobbies = document.querySelectorAll('input[name="hobbies"]:checked') //[]
+            // const education = document.querySelector('input[name="education"]:checked').value //[]
+
+            // let hobbiesValue = ""
+            // for (let i = 0; i < hobbies.length; i++) {
+            //     console.log(i, hobbies[i].value)
+            //     hobbiesValue += hobbies[i].value
+            //     hobbiesValue += " "
+            // }
+
+
+            // let user = {
+            //     name,
+            //     age,
+            //     email,
+            //     gender,
+            //     hobbiesValue,
+            //     education
+            // }
+
+            // console.log("user", user)
+
+
+            const formData = new FormData(form)
+
+            console.log(formData)
+
+            let user = {
+                name: formData.get("name"),
+                age: formData.get("age"),
+                email: formData.get("email"),
+                gender: formData.get("gender"),
+                hobbiesValue: formData.getAll("hobbies").join(", "),
+                education: formData.get("education"),
+            }
+
+            console.log("user", user)
+
+
+            const row = userTable.insertRow()
+
+            row.innerHTML =
+                `
+            <td>${user.name}</td>
+            <td>${user.age}</td>
+            <td>${user.email}</td>
+            <td>${user.gender}</td>
+            <td>${user.hobbiesValue}</td>
+            <td>${user.education}</td>
+            <td>
+                <button onclick="deleteBtn(this)">DEL</button>
+            </td>
+            `
+
+            form.reset()
+        })
+
+        function deleteBtn(btn) {
+            btn.parentNode.parentNode.remove()
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
