@@ -1,0 +1,9 @@
+1. ES6
+    - let,const and var
+    - Template Literals
+    - functions
+    - Default Parameter
+    - Destructing
+    - Spread and rest operator
+    - async & await
+2. Array Methods
