@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Data</title>
+
+    <style>
+        body {
+            background-color: rgba(222, 222, 222, 0.777);
+            text-align: center;
+            margin: 0;
+            padding: 10px 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .country-card {
+            background-color: white;
+            padding: 10px 20px;
+            width: 100px;
+            border-radius: 10px;
+        }
+
+        .country-card img {
+            width: 100%;
+            /* height: 100%; */
+            height: 90px;
+            object-fit: contain;
+        }
+
+        #search {
+            padding: 10px;
+            width: 300px;
+            max-width: 90%;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌍 Country Flags</h1>
+
+    <input type="text" id="search" placeholder="Search for a country..." />
+
+    <div id="container" class="container">
+
+        <!-- <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div> -->
+        <!-- <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+            <p>Antigua and Barbuda</p>
+        </div> -->
+    </div>
+
+    <script>
+
+        const container = document.getElementById('container');
+        const search = document.getElementById('search');
+
+        let countriesData = [];
+
+        function displayCountries(countries) {
+            countries.forEach(country => {
+                const flagImg = country.flags.png
+                const countryName = country.name.common
+
+                const card = document.createElement('div');
+                card.className = "country-card";
+
+                card.innerHTML = `
+        <img src=${flagImg} alt="flag-image">
+            <p>${countryName}</p>
+        `;
+
+                container.appendChild(card);
+            })
+        }
+
+        //ES5
+        // fetch("https://restcountries.com/v3.1/all?fields=name,flags")
+        //     .then(response => response.json())
+        //     .then(datas => {
+        //         countriesData = datas;
+
+        //         const sortedData = datas.sort((a, b) => {
+        //             return a.name.common.localeCompare(b.name.common);
+        //         })
+
+        //         displayCountries(sortedData);
+        //     })
+
+
+        //ES6
+        async function fetchCountryData() {
+            const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags")
+            const datas = await response.json()
+
+            countriesData = datas;
+
+            const sortedData = datas.sort((a, b) => {
+                return a.name.common.localeCompare(b.name.common);
+            })
+
+            displayCountries(sortedData);
+
+        }
+
+        fetchCountryData()
+
+
+        search.addEventListener("input", (e) => {
+            const input = e.target.value.toLowerCase();
+
+            let filteredCountries = countriesData.filter((country) => {
+                return country.name.common.toLowerCase().includes(input)
+            })
+
+            container.innerHTML = "";
+
+            displayCountries(filteredCountries);
+        })
+        // for (let i = 1; i <= 100; i = i + 1) {
+        //     const card = document.createElement('div');
+        //     card.className = "country-card";
+
+        //     card.innerHTML = `
+        // <img src="https://flagcdn.com/w320/ag.png" alt="flag-image">
+        //     <p>Antigua and Barbuda</p>
+        // `;
+
+        //     container.appendChild(card);
+
+        // }
+    </script>
+
+</body>
+
+</html>
