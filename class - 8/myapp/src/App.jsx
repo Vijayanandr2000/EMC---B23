@@ -9,15 +9,15 @@ function App() {
 
   useEffect(() => {
     console.log("Mounting", value);
+  }, []);
 
-    return () => {
-      console.log("Un-Mounting", value);
-    };
+  useEffect(() => {
+    console.log("Updating", value);
   }, [value]);
 
   return (
     <>
-      {/* <h1>Count: {value}</h1>
+      <h1>Count: {value}</h1>
 
       <button
         onClick={() => {
@@ -28,8 +28,8 @@ function App() {
         }}
       >
         Inc
-      </button> */}
-      <Form></Form>
+      </button>
+      {/* <Form></Form> */}
     </>
   );
 }

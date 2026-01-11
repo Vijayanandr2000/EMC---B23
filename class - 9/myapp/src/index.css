@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  border: 1px solid black;
+}
+
+button {
+  padding: 10px 20px;
+  background: grey;
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 50px 100px;
+}
