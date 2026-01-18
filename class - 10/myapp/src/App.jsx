@@ -5,21 +5,21 @@ import CountryContextProvider from "./context/CountryContext";
 import CountryInfo from "./pages/CountryInfo";
 
 function App() {
-  const [data, setData] = useState([1, 2]);
+  // const [data, setData] = useState([1, 2]);
 
-  useEffect(() => {
-    data.push(3);
-    setData([...data]);
-  }, []);
+  // useEffect(() => {
+  //   data.push(3);
+  //   setData([...data]);
+  // }, []);
 
   return (
     <>
-      {/* <CountryContextProvider>
+      <CountryContextProvider>
         <CountryInfo />
-      </CountryContextProvider> */}
-      {data.map((d) => (
+      </CountryContextProvider>
+      {/* {data.map((d) => (
         <h1>{d}</h1>
-      ))}
+      ))} */}
     </>
   );
 }
