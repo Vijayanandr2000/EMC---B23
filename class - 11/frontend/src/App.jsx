@@ -19,7 +19,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const resp = await fetch("http://localhost:8000/signup", {
+    const resp = await fetch("https://emc-b23.onrender.com/signup", {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
