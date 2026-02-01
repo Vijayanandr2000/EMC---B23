@@ -8,11 +8,13 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "start:db": "nodemon index-db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "mongodb": "^7.0.0",
     "nodemon": "^3.1.11"
   }
 }
